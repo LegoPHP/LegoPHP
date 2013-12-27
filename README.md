@@ -1,7 +1,7 @@
 LegoPHP
 =======
 
-Enterprise Architecture Micro Plug-in Framework
+Micro Enterprise Architecture Plug-in Framework
 
 "... an architectural framework provides tools and approaches that help architects abstract from the level of detail that builders work at to bring enterprise design tasks into focus ..."
 
