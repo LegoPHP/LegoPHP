@@ -1,6 +1,19 @@
 #!/bin/bash
 
-yum install -y mysql mysql-server php php-cli php-mcrypt php-xml php-mbstring php-devel php-mysql php-pecl-memcached php-pear php-pecl-xdebug memcached httpd mlocate nano wget iptraf iftop memcached mod_ssl phpMyAdmin git git-flow 
+yum install -y mysql mysql-server php php-cli php-mcrypt php-xml php-mbstring php-devel php-mysql php-pecl-memcached php-pear php-pecl-xdebug memcached httpd mlocate nano wget iptraf iftop memcached mod_ssl phpMyAdmin git
+
+# Install git-flow
+echo "source ~/git-flow-completion.bash" >> ~/.bashrc
+cd ~ git clone https://github.com/nvie/gitflow.git
+cd gitflow
+git submodule init
+git submodule update
+git clone http://github.com/nvie/shFlags.git
+cd ../
+wget --no-check-certificate -q -O - https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh | sudo bash
+git clone https://github.com/bobthecow/git-flow-completion.git
+mv git-flow-completion/git-flow-completion.bash ./
+source ~/.bashrc
 
 # Modify httpd.conf
 sed -i 's|/var/www/html|/vagrant|g' /etc/httpd/conf/httpd.conf
@@ -49,3 +62,6 @@ do
     echo "Importing Schema " $f
     mysql -u root < $f
 done
+
+# Import Plugin Schemas
+find ./plugins/*/Schemas/* -name '*.sql' | awk '{ print "source",$0 }' | mysql --batch
