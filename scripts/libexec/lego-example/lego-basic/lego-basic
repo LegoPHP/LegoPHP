@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Usage: lego example bash basic
+# Summary: List all basic lego Example Scripts
+# Help: This command lists all of the basic lego Example Scripts
+
+set -e
+
+lego help example bash basic

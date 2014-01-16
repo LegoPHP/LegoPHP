@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Usage: lego example advanced
+# Summary: List all Advanced lego Example Scripts
+# Help: This command lists all of the Advanced lego Example Scripts
+
+set -e
+
+lego help example bash advanced
