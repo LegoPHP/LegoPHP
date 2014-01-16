@@ -8,9 +8,9 @@ Multi-Site Enterprise Architecture Plug-in Framework w/ Administration Dashboard
 
 - http://en.wikipedia.org/wiki/Enterprise_Architecture_framework
 
-======================
-Current Directory Tree
-======================
+==================== 
+Current Directory and File Tree
+====================
 
 ├── README.md
 ├── Vagrantfile
