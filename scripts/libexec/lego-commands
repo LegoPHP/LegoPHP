@@ -16,12 +16,14 @@ fi
 
 shopt -s nullglob
 
-if grep -i "^# provide lego completions" "$_SUB_COMMAND_ROOT/lego-$_SUB_COMMAND_FILE" >/dev/null; then
-  completions=`exec "$_SUB_COMMAND_ROOT/lego-$_SUB_COMMAND_FILE" --complete "$@"`
-  if [ "$completions" ]; then
-    echo $completions
-  fi
-  exit
+if [ -f "$_SUB_COMMAND_ROOT/lego-$_SUB_COMMAND_FILE" ]; then
+    if grep -i "^# provide lego completions" "$_SUB_COMMAND_ROOT/lego-$_SUB_COMMAND_FILE" >/dev/null; then
+      completions=`exec "$_SUB_COMMAND_ROOT/lego-$_SUB_COMMAND_FILE" --complete "$@"`
+      if [ "$completions" ]; then
+        echo $completions
+      fi
+      exit
+    fi
 fi
 
 { for path in ${PATH//:/$'\n'}; do
