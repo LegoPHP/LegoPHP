@@ -1,0 +1,14 @@
+<VirtualHost *:80>
+    DocumentRoot /legophp/sites/DOMAIN/webroot
+    ServerName admin.DOMAIN
+    ErrorLog /var/log/httpd/www.DOMAIN-error_log
+    CustomLog /var/log/httpd/www.DOMAIN-access_log common
+
+    <Directory /legophp/sites/DOMAIN/webroot>
+        Options +FollowSymLinks +SymLinksIfOwnerMatch -Indexes
+        AllowOverride All
+        Order Allow,Deny
+        Allow from all
+    </Directory>
+
+</VirtualHost>
