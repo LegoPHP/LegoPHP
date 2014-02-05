@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+rm -rf /legophp/conf.d/vagrant/*.conf
+rm -rf /legophp/conf.d/staging/*.conf
+rm -rf /legophp/conf.d/production/*.conf
+
+cp /legophp/conf.d/templates/*.conf /legophp/conf.d/vagrant/ 
+sed -i '' -e 's/com/loc/g' /legophp/conf.d/vagrant/*.conf
+cp /legophp/conf.d/templates/*.conf /legophp/conf.d/staging/
+sed -i '' -e 's/com/sta/g' /legophp/conf.d/staging/*.conf
+cp /legophp/conf.d/templates/*.conf /legophp/conf.d/production/
