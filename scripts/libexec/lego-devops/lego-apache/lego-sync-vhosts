@@ -5,7 +5,13 @@ rm -rf /legophp/conf.d/staging/*.conf
 rm -rf /legophp/conf.d/production/*.conf
 
 cp /legophp/conf.d/templates/*.conf /legophp/conf.d/vagrant/ 
-sed -i '' -e 's/com/loc/g' /legophp/conf.d/vagrant/*.conf
+sed -i '' -e 's/\.com$/\.loc/g' /legophp/conf.d/vagrant/*.conf
+sed -i '' -e 's/\.org$/\.loc/g' /legophp/conf.d/vagrant/*.conf
+sed -i '' -e 's/\.net$/\.loc/g' /legophp/conf.d/vagrant/*.conf
+sed -i '' -e 's/\.us$/\.loc/g' /legophp/conf.d/vagrant/*.conf
 cp /legophp/conf.d/templates/*.conf /legophp/conf.d/staging/
-sed -i '' -e 's/com/sta/g' /legophp/conf.d/staging/*.conf
+sed -i '' -e 's/\.com$/\.sta/g' /legophp/conf.d/staging/*.conf
+sed -i '' -e 's/\.org$/\.sta/g' /legophp/conf.d/staging/*.conf
+sed -i '' -e 's/\.net$/\.sta/g' /legophp/conf.d/staging/*.conf
+sed -i '' -e 's/\.us$/\.sta/g' /legophp/conf.d/staging/*.conf
 cp /legophp/conf.d/templates/*.conf /legophp/conf.d/production/

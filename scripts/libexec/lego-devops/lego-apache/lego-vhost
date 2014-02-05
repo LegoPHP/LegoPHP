@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Provide lego completions
+if [ "$1" = "--complete" ]; then
+  echo new
+  echo rm
+fi
+
+if [[ "$4" == "" ]]; then
+	echo "Please supply a sub.domain-name.tld"
+	exit
+fi
+
+if [[ "$3" == "new" ]]; then
+	cp /legophp/conf.d/templates/conf.skeleton /legophp/conf.d/templates/$4.conf
+	sed -i '' -e "s|DOMAIN|$4|g" /legophp/conf.d/templates/$4.conf
+fi
+
+if [[ "$3" == "rm" ]]; then
+	if [ -f /legophp/conf.d/templates/$4.conf ]; then
+		rm -rf /legophp/conf.d/templates/$4.conf
+	fi
+fi
+
+lego devops apache sync-vhosts
