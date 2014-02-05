@@ -4,7 +4,8 @@ yum install -y mysql mysql-server php php-cli php-mcrypt php-xml php-mbstring ph
 
 # Install git-flow
 echo "source ~/git-flow-completion.bash" >> ~/.bashrc
-cd ~ git clone https://github.com/nvie/gitflow.git
+cd ~
+git clone https://github.com/nvie/gitflow.git
 cd gitflow
 git submodule init
 git submodule update
@@ -15,8 +16,11 @@ git clone https://github.com/bobthecow/git-flow-completion.git
 mv git-flow-completion/git-flow-completion.bash ./
 source ~/.bashrc
 
+# Add vagrant conf.d files
+echo "/vagrant/conf.d/vagrant/*.conf" > /etc/httpd/conf.d/legophp.conf
+
 # Modify httpd.conf
-sed -i 's|/var/www/html|/vagrant|g' /etc/httpd/conf/httpd.conf
+# sed -i 's|/var/www/html|/vagrant|g' /etc/httpd/conf/httpd.conf
 sed -i 's|AllowOverride None|AllowOverride All|g' /etc/httpd/conf/httpd.conf
 sed -i 's|user apache|user vagrant|g' /etc/httpd/conf/httpd.conf
 sed -i 's|group apache|group vagrant|g' /etc/httpd/conf/httpd.conf
@@ -64,4 +68,4 @@ do
 done
 
 # Import Plugin Schemas
-find ./plugins/*/Schemas/* -name '*.sql' | awk '{ print "source",$0 }' | mysql --batch
+find ./plugins/* -name '*.sql' | awk '{ print "source",$0 }' | mysql --batch
